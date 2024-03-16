@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const contents = document.querySelectorAll('.dropdown-content')
   const searchInput = document.getElementById('searchInput')
   const line = document.querySelectorAll('.dropdown__line')
-  const icons = document.querySelectorAll('.icon use');
+  const images = document.querySelectorAll('.dropdown__line img')
 
   const initialContentDisplay = {}
   contents.forEach(function (content) {
@@ -19,26 +19,20 @@ document.addEventListener('DOMContentLoaded', function () {
       contents.forEach(function (content, contentIndex) {
         if (index === contentIndex) {
           content.style.display =
-            content.style.display === 'none' ? 'block' : 'none';
+            content.style.display === 'none' ? 'block' : 'none'
 
           line.forEach(function (item) {
-            item.classList.remove('active');
-          });
-          icons.forEach(function (icon) {
-            icon.parentNode.classList.remove('active');
-          });
+            item.classList.remove('active')
+          })
           if (content.style.display === 'block') {
-            line[index].classList.add('active');
-            icons[index].setAttribute('xlink:href', './img/sprite.svg#open');
-            icons[index].parentNode.classList.add('active');
+            line[index].classList.add('active')
+            images[index].src = './img/open-vector.svg'
           } else {
-            icons[index].setAttribute('xlink:href', './img/sprite.svg#close');
-            icons[index].parentNode.classList.remove('active');
+            images[index].src = './img/close-vector.svg'
           }
         } else {
-          content.style.display = 'none';
-          icons[contentIndex].setAttribute('xlink:href', './img/sprite.svg#close');
-          icons[contentIndex].parentNode.classList.remove('active');
+          content.style.display = 'none'
+          images[contentIndex].src = './img/close-vector.svg'
         }
       })
     })
